@@ -15,6 +15,8 @@ use App\Models\Post\Category;
 use App\Models\Post\Post;
 use App\Models\Post\Tag;
 
+use Illuminate\Support\Str;
+
 use File;
 
 class PostController extends Controller
@@ -28,8 +30,8 @@ class PostController extends Controller
     public function index()
     {
         $posts = Post::orderBy('id', 'DESC')
-            ->where('user_id', auth()->user()->id)
-            ->paginate();
+        ->where('user_id', auth()->user()->id)
+        ->paginate();
 
         return view('admin.posts.index', compact('posts'));
     }
@@ -47,7 +49,7 @@ class PostController extends Controller
         $post = Post::create($request->all());
         //$this->authorize('pass', $post);
 
-        //IMAGE 
+        //IMAGE
         if($request->file('image')){
             //$path = Storage::disk('public')->put('images',  $request->file('image'));
 
@@ -65,7 +67,7 @@ class PostController extends Controller
 
     private function getFileName($file)
     {
-        return str_random(32).'.'.$file->extension();
+        return Str::random(32).'.'.$file->extension();
     }
 
     public function show($id)
@@ -95,24 +97,30 @@ class PostController extends Controller
 
         $post->fill($request->all())->save();
 
-        //IMAGE 
+        //dd($request->tags);
+
+        //IMAGE
         if($request->file('image')){
-            $path = Storage::disk('public')->put('images',  $request->file('image'));
-            $post->fill(['file' => asset($path)])->save();
+            //$path = Storage::disk('public')->put('images',  $request->file('image'));
+
+            $path = $this->getFileName($request->image);
+            $request->image->move(base_path('public/images'), $path);
+
+            $post->fill(['file' => $path])->save();
         }
 
         //TAGS
         $post->tags()->sync($request->get('tags'));
 
         return redirect()->route('posts.show', $post->id)
-            ->with('info', 'Entrada actualizada con éxito');
+        ->with('info', 'Entrada actualizada con éxito');
     }
 
     public function destroy($id)
     {
         $post = Post::find($id);
         $this->authorize('pass', $post);
-        
+
         $post->delete();
 
         return back()->with('info', 'Eliminado correctamente');

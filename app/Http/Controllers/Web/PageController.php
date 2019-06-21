@@ -24,7 +24,7 @@ class PageController extends Controller
         $posts = Post::where('category_id', $category)
             ->orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(10);
 
-        return view('web.posts', compact('posts'));
+        return view('web.category', compact('posts'));
     }
 
     public function tag($slug){ 
@@ -32,7 +32,7 @@ class PageController extends Controller
                 $query->where('slug', $slug);
             })->orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(10);
 
-        return view('web.posts', compact('posts'));
+        return view('web.tag', compact('posts'));
     }
 
     public function post($slug){

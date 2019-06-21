@@ -5,7 +5,16 @@
     <div class="row">
         <div class="col-md">
 
-        	<h3 CLASS="card-title mb-2 text-muted">LISTA DE ARTICULOS</h3>
+            <div class="form-group row">
+                <h5 class="col-7"> Apuntes, detalles y teoría de la construcción.</h5>
+                <div class="form-group col-4">
+                    <input
+                        type="text"
+                        class="form-control mr-sm-2 mb-2 mb-sm-0"
+                        placeholder="Search..."
+                        autocomplete="off">
+                </div>
+            </div>
 
         	@foreach($posts as $post)
             <div class="card">
@@ -15,7 +24,7 @@
                     @if($post->file)
                         <img src="images/{{ $post->file }}" class="card-img-top">
                     @endif
-                    
+
                     {{ $post->excerpt }}
                     <a href="{{ route('post', $post->slug) }}" class="float-right">Leer más</a>
                 </div>
