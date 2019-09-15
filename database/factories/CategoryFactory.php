@@ -1,6 +1,7 @@
 <?php
 
 use Faker\Generator as Faker;
+use Illuminate\Support\Str;
 
 $factory->define(App\Models\Post\Category::class, function (Faker $faker) {
 
@@ -8,7 +9,7 @@ $factory->define(App\Models\Post\Category::class, function (Faker $faker) {
 
     return [
         'name' => $title,
-        'slug' => str_slug($title),
+        'slug' => Str::slug($title),
         'body' => $faker->text(500),
     ];
 });
