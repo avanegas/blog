@@ -52,7 +52,7 @@ class PermissionController extends Controller {
         }
 
         return redirect()->route('permissions.index')
-            ->with('info', 'Permission'. $permission->name.' added!');
+            ->with('info', 'Permission added! :'. $permission->name);
     }
 
     public function show($id) 
@@ -78,7 +78,7 @@ class PermissionController extends Controller {
         $permission->fill($input)->save();
 
         return redirect()->route('permissions.index')
-            ->with('info', 'Permission'. $permission->name.' updated!');
+            ->with('info', 'Permission updated! : '. $permission->name);
     }
 
     public function destroy($id) 
@@ -87,12 +87,12 @@ class PermissionController extends Controller {
 
         if ($permission->name == "Administer roles & permissions") {
             return redirect()->route('permissions.index')
-                ->with('info', 'Cannot delete this Permission!');
+                ->with('info', ' Cannot delete this Permission!');
         }
 
         $permission->delete();
 
         return redirect()->route('permissions.index')
-            ->with('info', 'Permission deleted!');
+            ->with('info', ' Permission deleted!');
     }
 }

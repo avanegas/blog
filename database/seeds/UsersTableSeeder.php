@@ -19,9 +19,9 @@ class UsersTableSeeder extends Seeder
         factory(User::class, 29)->create();
         
         $user = User::create([
-        	'name' => 'Angel Vanegas',
-        	'email'=> 'avanepe@hotmail.com',
-        	'password' => bcrypt('alvape14')
+          'name'      => 'Angel Vanegas',
+          'email'     => 'avanepe@hotmail.com',
+          'password'  => bcrypt('alvape14')
         ]);
         //$user->roles()->attach($role_admin);
     }

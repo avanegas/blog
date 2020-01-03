@@ -34,7 +34,7 @@
 
             <hr>
             <div class="card-block">
-                <h5>Este articulo tiene <span>{{$comments->count()}} {{ str_plural('comentario', $comments->count()) }}</span></h5>
+                <h5>Este articulo tiene <span>{{$comments->count()}} {{ Illuminate\Support\Str::plural('comentario', $comments->count()) }}</span></h5>
             @if (Auth::check())
                 <!--include('includes.errors')-->
                     {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}

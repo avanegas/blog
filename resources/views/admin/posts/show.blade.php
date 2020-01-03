@@ -51,7 +51,7 @@
                       {{ Form::close() }}
                   @endif
                   <hr>
-                  <h5><span>{{$comments->count()}} {{ str_plural('respuesta', $comments->count()) }}</span></h5>
+                  <h5><span>{{$comments->count()}} {{ Illuminate\Support\Str::plural('respuesta', $comments->count()) }}</span></h5>
                   <hr>
                   @forelse ($comments as $comment)
                       <div class="card">

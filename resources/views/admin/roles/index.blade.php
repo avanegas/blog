@@ -6,10 +6,11 @@
 <div class="container">
     <div class="row">
         <div class="col-md">
-            <h4><i class="fas fa-lock-open"></i> Administración
+          <div class="row">
+            <h4 class="col-sm-5 col-md-10"><i class="fas fa-lock-open"></i> Administración</h4>
                 <a href="{{ route('users.index') }}" class="btn btn-sm btn-secondary float-right">Usuarios</a>
-                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-secondary float-right">Permisos</a>
-            </h4>
+                <a href="{{ route('permissions.index') }}" class="btn btn-sm btn-secondary ml-1">Permisos</a>
+          </div>  
             <hr>
             <div class="card-title">
                 <h5><i class="fa fa-key"></i> Roles
