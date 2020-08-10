@@ -15,7 +15,7 @@
 
                 <div >
                     @if($post->file)
-                        <img src="../images/{{ $post->file }}" class="card-img-top">
+                        <img src="{{ $post->file }}" class="card-img-top">
                     @endif
                     <hr>
                     <h4 class="card-title">{{ $post->name }}</h4>
