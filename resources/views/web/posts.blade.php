@@ -32,7 +32,9 @@
             <br/>
             @endforeach
 
-            {{ $posts->render() }}
+            <div  class="d-flex justify-content-center mt-3">
+                {{ $posts->render() }}
+            </div>
         </div>
     </div>
 </div>
