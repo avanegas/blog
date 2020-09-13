@@ -14,7 +14,7 @@ class PageController extends Controller
 {
     
     public function blog(){
-    	$posts = Post::orderBy('id', 'DESC')->where('status', 'PUBLISHED')->paginate(10);
+    	$posts = Post::where('status', 'PUBLISHED')->orderBy('id', 'DESC')->paginate(10);
     	return view('web.posts', compact('posts'));
     }
 

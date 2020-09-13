@@ -14,7 +14,7 @@
 
               <div class="card-block">
                   @if($post->file)
-                      <img src=" ../images/{{ $post->file }}" class="card-img-top">
+                      <img src=" {{ $post->file }}" class="card-img-top">
                   @endif
                   <h5 class="card-title"><span>TITULO:</span>{{ $post->name }}</h5>
                       <p><span>RESUMEN:</span> {{$post->excerpt}}</p>

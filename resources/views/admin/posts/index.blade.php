@@ -27,7 +27,7 @@
                                     <td>{{ $post->id }}</td>
                                     <td>{{ $post->name }}</td>
                                     <td>{{ $post->created_at }}</td>
-                                    <td><img src="../images/{{$post->file }}" alt="Imagen" width = "80px"></td>
+                                    <td><img src="{{$post->file }}" alt="Imagen" width = "80px"></td>
                                     <td width="10px">
                                         <a href="{{ route('posts.show', $post->id) }}" class="btn btn-sm btn-primary">Ver</a>
                                     </td>

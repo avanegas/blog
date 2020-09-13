@@ -4,10 +4,9 @@
 <div class="container">
     <div class="row">
         <div class="col-md">
-
-            <div class="form-group row">
-                <h5 class="col-7"> Apuntes, detalles y teoría de la construcción.</h5>
-                <div class="form-group col-4">
+            <div class="d-flex">
+                <h5 class="mr-auto p-2"> Apuntes, detalles y teoría de la construcción.</h5>
+                <div class="col-4 p-0">
                     <input
                         type="text"
                         class="form-control mr-sm-2 mb-2 mb-sm-0"
@@ -15,25 +14,32 @@
                         autocomplete="off">
                 </div>
             </div>
-
-        	@foreach($posts as $post)
-            <div class="card">
-                <div class="card-title">{{ $post->name }}</div>
-
-                <div class="card-block">
-                    @if($post->file)
-                        <img src="{{ $post->file }}" class="card-img-top">
-                    @endif
-
-                    {{ $post->excerpt }}
-                    <a href="{{ route('post', $post->slug) }}" class="float-right">Leer más</a>
+            <div class="row">
+                <div class="col-md">
+                    @foreach($posts as $post)
+                    <div class="card mb-3 mt-3">
+                        <div class="card-header">
+                            <p>Tema creado por, {{$post->name}} el día<em> {{$post->created_at}}.</em></p>
+                        </div>
+                        <div class="card-body">
+                            @if($post->file)
+                                <img src="{{ $post->file }}" class="card-img-top">
+                            @endif
+                                <p class="card-title">CATEGORIA: {{$post->category->name}}</p>
+                                <p class="text-uppercase text-center">{{$post->name}}</p>
+                                <p class="card-text text-justify">{{$post->excerpt}}
+                                    <a href="{{ route('post', $post->slug) }}" class="float-right">leer más</a>
+                                </p>
+                        </div>
+                        <div class="card-footer">
+                            <p class="float-right">comentarios: 2</p>
+                        </div>
+                    </div>
+                    @endforeach
+                    <div  class="d-flex justify-content-center mt-3">
+                        {{ $posts->render() }}
+                    </div>
                 </div>
-            </div>
-            <br/>
-            @endforeach
-
-            <div  class="d-flex justify-content-center mt-3">
-                {{ $posts->render() }}
             </div>
         </div>
     </div>

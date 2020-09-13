@@ -5,64 +5,66 @@
     <div class="row">
         <div class="col-md">
 
-            <div class="card-block">
-                <div>
-                    <h6 class="card-subtitle">CATEGORIA:</h6>
-                    <a href="{{ route('category', $post->category->slug) }}">
+            <div class="card mb-3 mt-3">
+                <div class="card-header">
+                    CATEGORIA:
+                    <a href="{{ route('category', $post->category->slug) }}" class="card-title" title="Selección por categoría">
                         {{ $post->category->name }}
                     </a>
                 </div>
 
-                <div >
+                <div class="card-body" >
                     @if($post->file)
                         <img src="{{ $post->file }}" class="card-img-top">
                     @endif
-                    <hr>
-                    <h4 class="card-title">{{ $post->name }}</h4>
-                    {!! $post->body !!}
-                </div>
-
-                <div>
-                    <h6 class="card-subtitle">ETIQUETAS:</h6>
-                    @foreach($post->tags as $tag)
-                        <a href="{{ route('tag', $tag->slug) }}">
-                            {{ $tag->name }},
-                        </a>
-                    @endforeach
+                        <p class="card-title text-uppercase text-center">{{$post->name}}</p>
+                        <p class="card-text text-justify">{{ $post->body }}</p>
+                        <p class="card-title">ETIQUETAS:
+                            @foreach($post->tags as $tag)
+                                <a href="{{ route('tag', $tag->slug) }}"  class="alert-link" title="Selección por etiqueta">
+                                    {{ $tag->name }},
+                                </a>
+                            @endforeach
+                        </p>
                 </div>
             </div>
 
-            <hr>
-            <div class="card-block">
-                <h5>Este articulo tiene <span>{{$comments->count()}} {{ Illuminate\Support\Str::plural('comentario', $comments->count()) }}</span></h5>
-            @if (Auth::check())
-                <!--include('includes.errors')-->
-                    {{ Form::open(['route' => ['comments.store'], 'method' => 'POST']) }}
-
-                    <div class="form-group">
-                        {{ Form::label('body', 'Escriba su comentario:') }}
-                        {{ Form::textarea('body', null, ['class' => 'form-control', 'rows' => '4']) }}
+            <div class="card">
+                <div class="card-body">
+                    <div class="d-flex">
+                        <h5 class="mr-auto p-2">Este articulo tiene <span style="font-weight: bold;">{{$comments->count()}}</span> {{ Illuminate\Support\Str::plural('comentario', $comments->count()) }}</h5>
+                        <h6 class="p-0"><button class="btn btn-outline-secondary" type="button" data-toggle="collapse" data-target="#comentario" aria-expanded="false" aria-controls="collapseExample">
+                                Comentar
+                        </button></h6>
                     </div>
+                    @if (Auth::check())
+                        <!--include('includes.errors')-->
+                        <form method="post" action="{{ route('comments.store') }}">
+                            @csrf
+                            <div class="collapse input-group mb-4" id="comentario">
+                                <textarea id="body" name="body" class="form-control" rows="5" aria-label="With textarea" placeholder="Escriba su comentario" ></textarea>
+                                <input type="hidden" id="post_id" name="post_id" value="{{$post->id}}">
+                                <div class="input-group-append">
+                                    <button class="btn btn-outline-secondary" type="submit">Publicar</button>
+                                </div>
 
-                    {{ Form::hidden('post_id', $post->id) }}
-                    {{ Form::submit('Send') }}
-
-                    {{ Form::close() }}
+                            </div>
+                        </form>
+                </div>
                 @endif
-                <br>
+
                 @forelse ($comments as $comment)
                     <div class="card">
-                        <div class="card-block">
-                            <p>{{ $comment->user->name }}, comento el {{$comment->created_at}}</p>
-                            <p>{{ $comment->body }}</p>
+                        <div class="card-body">
+                            <p><strong>Usuario: </strong>{{ $comment->user->name }}, <strong> con fecha: </strong>{{ $comment->created_at }}</p>
+                            <p><strong>Comentario: </strong>{{ $comment->body }}</p>
                         </div>
                     </div>
-                    <br>
+
                 @empty
                     <p>Este articulo NO tiene comentarios....?</p>
                 @endforelse
             </div>
-
         </div>
     </div>
 </div>
