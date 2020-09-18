@@ -3,22 +3,23 @@
 namespace App\Models\Post;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Presenters\DatePresenter;
+use App\User;
 
 class Comment extends Model
 {
-  use DatePresenter;
- 
+  protected $guarded = [];
+
   // fields can be filled
-  protected $fillable = ['body', 'user_id', 'post_id'];
- 
-  public function post()
-  {
-    return $this->belongsTo('App\Models\Post\Post');
-  }
+  protected $fillable = ['comment', 'user_id', 'parent_id'];
+
  
   public function user()
   {
-    return $this->belongsTo('App\User');
+    return $this->belongsTo(User::class);
   }
+
+  public function replies()
+    {
+        return $this->hasMany(Comment::class, 'parent_id');
+    }
 }

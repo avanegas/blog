@@ -8,7 +8,7 @@
                 <h5 class="mr-auto p-2"> Apuntes, detalles y teoría de la construcción.</h5>
                 <div class="col-4 p-0">
                     <input
-                        type="text"
+                        type="search"
                         class="form-control mr-sm-2 mb-2 mb-sm-0"
                         placeholder="Search..."
                         autocomplete="off">
@@ -32,7 +32,7 @@
                                 </p>
                         </div>
                         <div class="card-footer">
-                            <p class="float-right">comentarios: 2</p>
+                            <p class="float-right">comentarios: {{$post->comments->count()}}</p>
                         </div>
                     </div>
                     @endforeach

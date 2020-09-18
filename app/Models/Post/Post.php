@@ -3,24 +3,24 @@
 namespace App\Models\Post;
 
 use Illuminate\Database\Eloquent\Model;
-use App\Presenters\DatePresenter;
+use App\User;
 
 class Post extends Model
 {
-    use DatePresenter;
+    protected $guarded = [];
 
     protected $fillable = [
         'user_id', 'category_id', 'name', 'slug', 'excerpt', 'body', 'status', 'file'
     ];
 
-    public function category()
-    {
-        return $this->belongsTo(Category::class);
-    }
-
     public function user()
     {
         return $this->belongsTo(User::class);
+    }
+
+    public function category()
+    {
+        return $this->belongsTo(Category::class);
     }
 
     public function tags()
@@ -30,6 +30,6 @@ class Post extends Model
 
     public function comments()
     {
-      return $this->hasMany(App\Models\Post\Comment::class);
+      return $this->morphMany(Comment::class, 'commentable')->whereNull('parent_id');
     }
 }

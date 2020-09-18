@@ -5,11 +5,11 @@ namespace App;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
 use Spatie\Permission\Traits\HasRoles;
-use App\Presenters\DatePresenter;
+use App\Models\Post\Post;
 
 class User extends Authenticatable
 {
-    use Notifiable, DatePresenter, HasRoles;
+    use Notifiable, HasRoles;
 
     protected $fillable = [
         'name', 'email', 'password',
@@ -21,12 +21,7 @@ class User extends Authenticatable
 
     public function posts()
     {
-        return $this->hasMany(App\Models\Post\Post::class);
-    }
-
-    public function comments()
-    {
-        return $this->hasMany(App\Models\Post\Comment::class);
+        return $this->hasMany(Post::class);
     }
 
     public function setPasswordAttribute($password)

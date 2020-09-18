@@ -9,12 +9,13 @@ use App\Models\Post\Category;
 use App\Models\Post\Post;
 use App\Models\Post\Tag;
 use App\Models\Post\Comment;
+use App\User;
 
 class PageController extends Controller
 {
     
     public function blog(){
-    	$posts = Post::where('status', 'PUBLISHED')->orderBy('id', 'DESC')->paginate(10);
+    	$posts = Post::with(['user', 'category', 'comments'])->where('status', 'PUBLISHED')->orderBy('id', 'DESC')->paginate(10);
     	return view('web.posts', compact('posts'));
     }
 
@@ -37,7 +38,7 @@ class PageController extends Controller
 
     public function post($slug){
     	$post = Post::where('slug', $slug)->first();
-        $comments = Comment::where('post_id', $post->id)->get();
+        $comments = Comment::where('parent_id', $post->id)->get();
 
     	return view('web.post', compact('post', 'comments'));
     }

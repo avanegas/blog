@@ -26,7 +26,8 @@ Route::get('/tag/{slug}', 'Web\PageController@tag')->name('tag');
 Route::resource('tags', 	  'Admin\TagController');
 Route::resource('categories', 'Admin\CategoryController');
 Route::resource('posts',	  'Admin\PostController');
-Route::resource('comments',	  'Admin\CommentController');
+Route::post('/comments/store',	  'Admin\CommentController@store')->name('comment.add');
+Route::post('/reply/store', 'CommentController@replyStore')->name('reply.add');
 
 // Admin Users, Roles, Permission resource route.
 Route::resource('users', 'Admin\UserController');

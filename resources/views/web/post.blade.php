@@ -39,15 +39,14 @@
                     </div>
                     @if (Auth::check())
                         <!--include('includes.errors')-->
-                        <form method="post" action="{{ route('comments.store') }}">
+                        <form method="post" action="{{ route('comments.add') }}">
                             @csrf
                             <div class="collapse input-group mb-4" id="comentario">
                                 <textarea id="body" name="body" class="form-control" rows="5" aria-label="With textarea" placeholder="Escriba su comentario" ></textarea>
-                                <input type="hidden" id="post_id" name="post_id" value="{{$post->id}}">
+                                <input type="hidden" id="parentt_id" name="parentt_id" value="{{$post->id}}">
                                 <div class="input-group-append">
                                     <button class="btn btn-outline-secondary" type="submit">Publicar</button>
                                 </div>
-
                             </div>
                         </form>
                 </div>
@@ -57,7 +56,7 @@
                     <div class="card">
                         <div class="card-body">
                             <p><strong>Usuario: </strong>{{ $comment->user->name }}, <strong> con fecha: </strong>{{ $comment->created_at }}</p>
-                            <p><strong>Comentario: </strong>{{ $comment->body }}</p>
+                            <p><strong>Comentario: </strong>{{ $comment->comment }}</p>
                         </div>
                     </div>
 
