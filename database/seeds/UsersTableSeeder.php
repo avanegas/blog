@@ -21,7 +21,7 @@ class UsersTableSeeder extends Seeder
         $user = User::create([
           'name'      => 'Angel Vanegas',
           'email'     => 'avanepe@hotmail.com',
-          'password'  => '$2y$10$plQ43fRUTlYtx570stctLuia9KWXda2Cwn1aoCrFqmzvR.zT4asy2' //alvape14
+          'password'  => '$2y$10$34l1u.yl/B7g1u6mek/pyuvT6yJZJ3/GijLfEswy1t6jzfoh3nMpW' //alvape14
         ]);
         //$user->roles()->attach($role_admin);
     }
