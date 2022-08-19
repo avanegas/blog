@@ -95,7 +95,7 @@ class OfertaController extends Controller
         $oferta->save();
 
         if ($request->file('file')) {
-            $url = Storage::put('posts', $request->file('file'));
+            $url = Storage::put('public/posts', $request->file('file'));
             if($oferta->image) {
                 Storage::delete($oferta->image->url);
                 $oferta->image->update([

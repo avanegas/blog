@@ -48,7 +48,7 @@
                             </div>
                             <div class="px-2 py-4">
                                 <div class="mb-2 font-bold uppercase">{{ $oferta->name }}</div>
-                                <p class="text-base text-gray-700 ">{{ $oferta->descripcion }}</p>
+                                <p class="text-base text-gray-700 ">{!! $oferta->descripcion !!}</p>
                             </div>
                             <div class="px-2 pt-2 pb-2">
                                 <span class="inline-block px-2 py-1 mb-2 mr-2 text-sm font-bold text-blue-700 bg-yellow-200 rounded-full">{{$oferta->updated_at->diffForHumans()}}</span>

@@ -70,6 +70,7 @@
 
         //Cambiar imagen.
         document.getElementById("file").addEventListener('change', cambiarImagen);
+
             function cambiarImagen(event){
                 var file = event.target.files[0];
                 var reader = new FileReader();
@@ -78,5 +79,6 @@
                 };
                 reader.readAsDataURL(file);
             }
+            
     </script>
 @endsection

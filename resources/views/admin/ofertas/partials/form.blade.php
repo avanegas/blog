@@ -78,13 +78,13 @@
             @isset ($oferta->image)
                 <img id="picture" src="{{Storage::url($oferta->image->url)}}">
             @else
-                <img id="picture" src="https://cdn.pixabay.com/photo/2020/02/06/20/01/university-library-4825366_960_720.jpg">
+                <img id="picture" src="https://cdn.pixabay.com/photo/2012/04/11/18/12/recycle-29227_960_720.png">
             @endisset
         </div>
     </div>
     <div class="col">
         <div class="form-group">
-            <label for="file">Imagen que se mostrara.</label>
+            <label for="file">Imagen que se mostrara en la oferta.</label>
             <input type="file" name="file" id="file" accept="image/*" class="form-control-file @error('file') is-invalid @enderror">
             @error('file')
                 <span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>
