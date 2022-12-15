@@ -1,4 +1,5 @@
 <div class="card">
+    <h1>{{ $lista }}; {{ $indice }}</h1>
     <div class="card-header">
         <button class="btn btn-warning btn-block"><strong>Borrar datos en esta linea. .  .?</strong></button>
     </div>

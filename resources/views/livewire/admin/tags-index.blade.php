@@ -33,7 +33,7 @@
                          <tr>
                              <td>{{$tag->id}}</td>
                              <td>{{$tag->name}}</td>
-                             <td>{{$tag->color}}</td>
+                             <td><span class="px-0" style="background-color: {{$tag->color}}; border-radius: 50%;">&nbsp; &nbsp; &nbsp; &nbsp;</span><span class="px-2">{{$tag->color}}</span></td>
                              <td style="width:10px;">
                                 @can('admin.tags.edit')
                                     <a href="{{route('admin.tags.edit', $tag)}}"><i class="fa fa-edit"></i></a>
