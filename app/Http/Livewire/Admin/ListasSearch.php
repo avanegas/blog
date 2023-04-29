@@ -15,18 +15,16 @@ class ListasSearch extends Component
         'perPage' => ['except' => '20']
         ];
     
-    public $lista , $indice ;
-
+    public $equipo;
     public $search = '';
-    public $sort ='name';
+    public $sort = 'name';
     public $direction = 'desc';
     public $perPage = '20';
 
-    public function mount($lista, $indice)
-    {
-        $this->lista = $lista;
-        $this->indice = $indice;
-    }
+    //public function mount(Equipo $equipo)
+    //{
+    //    $this->$equipo = $equipo;
+    //}
 
     public function render()
     {
@@ -41,7 +39,6 @@ class ListasSearch extends Component
         ]);
                     
     }
-
 
     public function order($sort)
     {

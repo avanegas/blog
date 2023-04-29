@@ -17,10 +17,15 @@
         <script src="{{ mix('js/app.js') }}" defer></script>
     </head>
     <body>
+        <x-jet-welcome />
         <div class="container">
+            <h1>TIPO DE LETRA</h1>
             <p class="font-mont font-hairline">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum odio totam illum eius velit. Similique corrupti excepturi consequatur perferendis expedita adipisci voluptas nihil amet, architecto at saepe, enim fugiat reiciendis.</p>
+            <hr/>
             <p class="font-mont font-light">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum odio totam illum eius velit. Similique corrupti excepturi consequatur perferendis expedita adipisci voluptas nihil amet, architecto at saepe, enim fugiat reiciendis.</p>
+            <hr/>
             <p class="font-mont font-semibold">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum odio totam illum eius velit. Similique corrupti excepturi consequatur perferendis expedita adipisci voluptas nihil amet, architecto at saepe, enim fugiat reiciendis.</p>
+            <hr/>
             <p class="font-mont font-black">Lorem ipsum dolor sit amet consectetur adipisicing elit. Rerum odio totam illum eius velit. Similique corrupti excepturi consequatur perferendis expedita adipisci voluptas nihil amet, architecto at saepe, enim fugiat reiciendis.</p>
         </div>
     </body>

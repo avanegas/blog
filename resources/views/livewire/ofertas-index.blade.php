@@ -1,9 +1,15 @@
 <div class="container py-8">
-    <div>
-        <h1 class="text-2xl text-gray-900 pb-2 px-6 md:px-12">
+    <div class="flex items-center justify-between mb-4 px-4 py-3 leading-normal text-blue-700 bg-blue-100 rounded-lg text-right">
+        <h1 class="">
             Ofertas...<strong class="text-sm"> Con factura y garantía.</strong>
         </h1>
+        <div class="" role="alert">
+            <i class="fa fa-shopping-cart"></i>
+            Cart (0)
+        </div>
+
     </div>
+    
     <div class="bg-white shadow overflow-hidden border-b border-gray-200 sm:rounded-lg">
         <div class="flex bg-white px-4 py-3 border-t border-gray-200">
             <x-jet-input class="w-full" placeholder="buscar ..." type="text" wire:model="search" />

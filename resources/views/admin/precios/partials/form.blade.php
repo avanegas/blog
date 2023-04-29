@@ -64,13 +64,15 @@
                 </thead>
 
                 <tbody>
+                    <!-- INICIO EQUIPO -->
                     @foreach($precio->equipos as $equipo)
                     <tr>
                         <!-- 
                         <td click="abrirModal(lista='equipos',indice=equipo.equipo_id)"  data-toggle="modal" data-target="#exampleModalLong">
+                            onclick="edit({{$equipo}})"
                         -->
-                        <td data-toggle="modal" data-target="#exampleModalLong" @php $lista='equipos'; $indice=$equipo->equipo_id; @endphp>
-                            <input id="equipo_id" type="text" class="form-control @error('equipo_id') is-invalid @enderror" placeholder='Ingrese el código' name="equipo_id" value="{{ isset($equipo->equipo_id)?$equipo->equipo_id:old('name') }}" autocomplete=off autofocus>
+                        <td data-toggle="modal" data-target="#exampleModalLong">
+                            <input  onClick="incluir({{ $equipo }})" id="equipo_id" type="text" class="form-control @error('equipo_id') is-invalid @enderror" placeholder='Ingrese el código' name="equipo_id" value="{{ isset($equipo->equipo_id)?$equipo->equipo_id:old('name') }}" autocomplete=off autofocus>
                             @error('equipo_id')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                         </td>
                         <td>
@@ -96,7 +98,7 @@
                     @php $sumaEquipo = $precio->equipos->sum('total');@endphp
                     @for ($i=0; $i < 5 - count($precio->equipos); $i++)
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModalLong" @php $lista='equipos'; $indice=0; @endphp>
+                        <td data-toggle="modal" data-target="#exampleModalLong">
                             <input type="text" class="form-control" value="Ingrese Equipo">
                         </td>
                         <td><input type="text" class="form-control" ></td>
@@ -124,7 +126,7 @@
                     </tr>
                     @foreach($precio->obreros as $obrero)
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModalLong" @php $lista='obreros'; $indice=$obrero->obrero_id; @endphp>
+                        <td data-toggle="modal" data-target="#exampleModalLong">
                             <input id="obrero_id" type="text" class="form-control @error('obrero_id') is-invalid @enderror" placeholder='Ingrese el código' name="obrero_id" value="{{ isset($obrero->obrero_id)?$obrero->obrero_id:old('obrero') }}" autocomplete=off autofocus>
                             @error('obrero_id')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                         </td>
@@ -176,7 +178,7 @@
                     </tr>
                     @foreach($precio->materials as $material)
                     <tr>
-                        <td data-toggle="modal" data-target="#exampleModalLong" @php $lista='materials'; $indice=$material->material_id; @endphp>
+                        <td data-toggle="modal" data-target="#exampleModalLong">
                             <input id="material_id" type="text" class="form-control @error('material_id') is-invalid @enderror" placeholder='Ingrese el código' name="material_id" value="{{ isset($material->material_id)?$material->material_id:old('material') }}" autocomplete=off autofocus>
                             @error('material_id')<span class="invalid-feedback" role="alert"><strong>{{ $message }}</strong></span>@enderror
                         </td>
@@ -312,14 +314,15 @@
                 <div class="modal-content">
 
                     <div class="modal-header">
-                        <h5 class="modal-title" id="exampleModalLabel">Equipos </h5>
+                        <h5 class="modal-title" id="exampleModalLabel">Equipos</h5>
                         <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span>&times;</span></button>
                     </div>
 
                     <div class="modal-body">
                         <div class="container">
                             <div class="">
-                                @livewire('admin.listas-search',['lista' => $lista, 'indice' => $indice] )
+                                @livewire('admin.listas-search', ['equipo' => $equipo], key($user->id))
+                               <!-- <livewire:admin.listas-search :equipo = "$equipo"/>-->
                             </div>
                         </div>               
                     </div>
@@ -332,6 +335,20 @@
             </div>
         </div>
         <!-- Modal -->
-        
+
+        <script>
+            $(document).ready(function () {
+                $("#incluir").click(function () {
+                    incluir();
+                });
+            });
+
+            function incluir($equipo) {
+
+                alert(Object.values($equipo));
+                window.livewire.emit('incluir', $equipo)
+                
+            }
+        </script>
     </div>
 </div>
