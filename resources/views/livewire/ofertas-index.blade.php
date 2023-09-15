@@ -5,7 +5,7 @@
         </h1>
         <div class="" role="alert">
             <i class="fa fa-shopping-cart"></i>
-            Cart (0)
+            Cart ({{ $cart_count }})
         </div>
 
     </div>

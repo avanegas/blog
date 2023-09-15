@@ -14,7 +14,7 @@ class ListasSearch extends Component
         'search' => ['except' => ''],
         'perPage' => ['except' => '20']
         ];
-    
+    public $grupo,$name,$marca,$tipo,$tarifa;
     public $equipo;
     public $search = '';
     public $sort = 'name';
@@ -40,6 +40,13 @@ class ListasSearch extends Component
                     
     }
 
+    public function clear()
+    {
+        $this->search = '';
+        $this->page = 1;
+        $this->perPage = '20';
+    }
+
     public function order($sort)
     {
         if ($this->sort == $sort) {
@@ -54,15 +61,9 @@ class ListasSearch extends Component
         }
     }
 
-    public function pasar($linea)
+    public function pasar($equipo)
     {
+        
+    }
 
-    }
-    
-    public function clear()
-    {
-        $this->search = '';
-        $this->page = 1;
-        $this->perPage = '20';
-    }
 }

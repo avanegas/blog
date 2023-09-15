@@ -73,7 +73,7 @@
                     </thead>
                     <tbody>
                     @foreach($equipos as $key=>$equipo)
-                        <tr wire:click="pasar({{ $equipo }})" style="cursor:pointer;">
+                        <tr wire:click.prevent="pasar({{ $equipo }})" style="cursor:pointer;">
                             <td class="px-2 py-3">{{ $equipo->grupo_equipo->name }}</td>
                             <td>{{ $equipo->name }}</td>
                             <td>{{ $equipo->marca }}</td>

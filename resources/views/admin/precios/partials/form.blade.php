@@ -69,7 +69,7 @@
                     <tr>
                         <!-- 
                         <td click="abrirModal(lista='equipos',indice=equipo.equipo_id)"  data-toggle="modal" data-target="#exampleModalLong">
-                            onclick="edit({{$equipo}})"
+                            onclick="edit($equipo}})"
                         -->
                         <td data-toggle="modal" data-target="#exampleModalLong">
                             <input  onClick="incluir({{ $equipo }})" id="equipo_id" type="text" class="form-control @error('equipo_id') is-invalid @enderror" placeholder='Ingrese el código' name="equipo_id" value="{{ isset($equipo->equipo_id)?$equipo->equipo_id:old('name') }}" autocomplete=off autofocus>
@@ -321,8 +321,8 @@
                     <div class="modal-body">
                         <div class="container">
                             <div class="">
-                                @livewire('admin.listas-search', ['equipo' => $equipo], key($user->id))
-                               <!-- <livewire:admin.listas-search :equipo = "$equipo"/>-->
+                                <!-- @livewire('admin.listas-search', ['equipo' => $equipo], key($user->id)) -->
+                                <livewire:admin.listas-search/>
                             </div>
                         </div>               
                     </div>
